@@ -11,6 +11,7 @@ import enitityControllers.MagazijnFacadeRemote;
 import enitityControllers.ProductFacadeRemote;
 import enitityControllers.VasteKlantFacadeRemote;
 import entitys.Adres;
+import entitys.Bestelling;
 import entitys.Klant;
 import entitys.Magazijn;
 import entitys.Product;
@@ -263,26 +264,169 @@ public class Main extends Application {
         magazijn2.addProduct(product14);
         magazijn2.addProduct(product15);
         magazijn2.addProduct(product16);
-        
-        magazijn1 = (Magazijn)magazijnDB.edit(magazijn1);
-        magazijn2 = (Magazijn)magazijnDB.edit(magazijn2);
-        product1 = (Product)productDB.edit(product1);
-        product2 = (Product)productDB.edit(product2);
-        product3 = (Product)productDB.edit(product3);
-        product4 = (Product)productDB.edit(product4);
-        product5 = (Product)productDB.edit(product5);
-        product6 = (Product)productDB.edit(product6);
-        product7 = (Product)productDB.edit(product7);
-        product8 = (Product)productDB.edit(product8);
-        product9 = (Product)productDB.edit(product9);
-        product10 = (Product)productDB.edit(product10);
-        product11 = (Product)productDB.edit(product11);
-        product12 = (Product)productDB.edit(product12);
-        product13 = (Product)productDB.edit(product13);
-        product14 = (Product)productDB.edit(product14);
-        product15 = (Product)productDB.edit(product15);
-        product16 = (Product)productDB.edit(product16);
+
+        magazijn1 = (Magazijn) magazijnDB.edit(magazijn1);
+        magazijn2 = (Magazijn) magazijnDB.edit(magazijn2);
+        product1 = (Product) productDB.edit(product1);
+        product2 = (Product) productDB.edit(product2);
+        product3 = (Product) productDB.edit(product3);
+        product4 = (Product) productDB.edit(product4);
+        product5 = (Product) productDB.edit(product5);
+        product6 = (Product) productDB.edit(product6);
+        product7 = (Product) productDB.edit(product7);
+        product8 = (Product) productDB.edit(product8);
+        product9 = (Product) productDB.edit(product9);
+        product10 = (Product) productDB.edit(product10);
+        product11 = (Product) productDB.edit(product11);
+        product12 = (Product) productDB.edit(product12);
+        product13 = (Product) productDB.edit(product13);
+        product14 = (Product) productDB.edit(product14);
+        product15 = (Product) productDB.edit(product15);
+        product16 = (Product) productDB.edit(product16);
         //Einde relatie producten met magazijn leggen
 
+        //Bestellingen maken
+        Bestelling bestelling1 = new Bestelling(Date.valueOf("2012-11-05"));
+        Bestelling bestelling2 = new Bestelling(Date.valueOf("2012-10-20"));
+        Bestelling bestelling3 = new Bestelling(Date.valueOf("2012-09-22"));
+        Bestelling bestelling4 = new Bestelling(Date.valueOf("2012-11-02"));
+        Bestelling bestelling5 = new Bestelling(Date.valueOf("2012-10-08"));
+        Bestelling bestelling6 = new Bestelling(Date.valueOf("2012-05-12"));
+        Bestelling bestelling7 = new Bestelling(Date.valueOf("2012-04-14"));
+        Bestelling bestelling8 = new Bestelling(Date.valueOf("2012-04-16"));
+        Bestelling bestelling9 = new Bestelling(Date.valueOf("2012-05-18"));
+        Bestelling bestelling10 = new Bestelling(Date.valueOf("2012-10-19"));
+
+        bestelling1 = (Bestelling) bestellingDB.create(bestelling1);
+        bestelling2 = (Bestelling) bestellingDB.create(bestelling2);
+        bestelling3 = (Bestelling) bestellingDB.create(bestelling3);
+        bestelling4 = (Bestelling) bestellingDB.create(bestelling4);
+        bestelling5 = (Bestelling) bestellingDB.create(bestelling5);
+        bestelling6 = (Bestelling) bestellingDB.create(bestelling6);
+        bestelling7 = (Bestelling) bestellingDB.create(bestelling7);
+        bestelling8 = (Bestelling) bestellingDB.create(bestelling8);
+        bestelling9 = (Bestelling) bestellingDB.create(bestelling9);
+        bestelling10 = (Bestelling) bestellingDB.create(bestelling10);
+        //Einde Bestellingen maken
+
+
+        //relaties leggen tussen product bestelling en persoon
+        //klant1
+        bestelling1.addProduct(product1);
+        bestelling1.addProduct(product2);
+        product1.addBestelling(bestelling1);
+        product2.addBestelling(bestelling1);
+        klant1.addBestelling(bestelling1);
+        bestelling1.setKlant(klant1);
+
+        bestelling2.addProduct(product9);
+        bestelling2.addProduct(product14);
+        bestelling2.addProduct(product4);
+        product9.addBestelling(bestelling2);
+        product14.addBestelling(bestelling2);
+        product4.addBestelling(bestelling2);
+        klant1.addBestelling(bestelling2);
+        bestelling2.setKlant(klant1);
+        //Einde klant 1
+        
+        //klant2
+        bestelling3.addProduct(product12);
+        product12.addBestelling(bestelling3);
+        klant2.addBestelling(bestelling3);
+        bestelling3.setKlant(klant2);
+        //Einde klant2
+        
+        //klant3
+        bestelling4.addProduct(product4);
+        bestelling4.addProduct(product15);
+        product4.addBestelling(bestelling4);
+        product15.addBestelling(bestelling4);
+        klant3.addBestelling(bestelling4);
+        bestelling4.setKlant(klant3);
+        //einde klant 3
+        
+        //klant 4
+        bestelling5.addProduct(product1);
+        bestelling5.addProduct(product2);
+        product1.addBestelling(bestelling5);
+        product2.addBestelling(bestelling5);
+        klant4.addBestelling(bestelling5);
+        bestelling5.setKlant(klant4);
+        bestelling6.addProduct(product11);
+        bestelling6.addProduct(product13);
+        bestelling6.addProduct(product4);
+        product11.addBestelling(bestelling6);
+        product13.addBestelling(bestelling6);
+        product4.addBestelling(bestelling6);
+        klant4.addBestelling(bestelling6);
+        bestelling6.setKlant(klant4);
+        //einde klant 4
+        
+        //Klant 5
+        bestelling7.addProduct(product12);
+        product12.addBestelling(bestelling7);
+        klant5.addBestelling(bestelling7);
+        bestelling7.setKlant(klant5);
+        //Einde klant 5
+        
+        //Vaste klant 1
+        bestelling8.addProduct(product15);
+        product15.addBestelling(bestelling8);
+        vasteKlant1.addBestelling(bestelling8);
+        bestelling8.setKlant(vasteKlant1);
+        bestelling9.addProduct(product9);
+        bestelling9.addProduct(product6);
+        bestelling9.addProduct(product14);
+        product9.addBestelling(bestelling9);
+        product6.addBestelling(bestelling9);
+        product14.addBestelling(bestelling9);
+        vasteKlant1.addBestelling(bestelling9);
+        bestelling9.setKlant(vasteKlant1);
+        //Einde vaste klant 1
+        
+        //Vaste klant2
+        bestelling10.addProduct(product1);
+        product1.addBestelling(bestelling10);
+        vasteKlant2.addBestelling(bestelling10);
+        bestelling10.setKlant(vasteKlant2);
+        //einde vasteklant2
+
+        //Einde alles update
+        product1 = (Product) productDB.edit(product1);
+        product2 = (Product) productDB.edit(product2);
+        product3 = (Product) productDB.edit(product3);
+        product4 = (Product) productDB.edit(product4);
+        product5 = (Product) productDB.edit(product5);
+        product6 = (Product) productDB.edit(product6);
+        product7 = (Product) productDB.edit(product7);
+        product8 = (Product) productDB.edit(product8);
+        product9 = (Product) productDB.edit(product9);
+        product10 = (Product) productDB.edit(product10);
+        product11 = (Product) productDB.edit(product11);
+        product12 = (Product) productDB.edit(product12);
+        product13 = (Product) productDB.edit(product13);
+        product14 = (Product) productDB.edit(product14);
+        product15 = (Product) productDB.edit(product15);
+        product16 = (Product) productDB.edit(product16);
+
+        klant1 = (Klant) klantDB.edit(klant1);
+        klant2 = (Klant) klantDB.edit(klant2);
+        klant3 = (Klant) klantDB.edit(klant3);
+        klant4 = (Klant) klantDB.edit(klant4);
+        klant5 = (Klant) klantDB.edit(klant5);
+        vasteKlant1 = (VasteKlant) vasteKlantDB.edit(vasteKlant1);
+        vasteKlant2 = (VasteKlant) vasteKlantDB.edit(vasteKlant2);
+        
+        bestelling1 = (Bestelling)bestellingDB.edit(bestelling1);
+        bestelling2 = (Bestelling)bestellingDB.edit(bestelling2);
+        bestelling3 = (Bestelling)bestellingDB.edit(bestelling3);
+        bestelling4 = (Bestelling)bestellingDB.edit(bestelling4);
+        bestelling5 = (Bestelling)bestellingDB.edit(bestelling5);
+        bestelling6 = (Bestelling)bestellingDB.edit(bestelling6);
+        bestelling7 = (Bestelling)bestellingDB.edit(bestelling7);
+        bestelling8 = (Bestelling)bestellingDB.edit(bestelling8);
+        bestelling9 = (Bestelling)bestellingDB.edit(bestelling9);
+        bestelling10 = (Bestelling)bestellingDB.edit(bestelling10);
+        //einde
     }
 }
