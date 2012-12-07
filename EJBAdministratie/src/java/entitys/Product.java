@@ -31,6 +31,16 @@ public class Product implements Serializable {
     private List<Bestelling> bestellingen;
     @ManyToOne
     private Magazijn magazijn;
+    
+    public Product() {
+        this(null, 0, 0);
+    }
+
+    public Product(String naam, double prijs, int aantalInVoorraad) {
+        this.setNaam(naam);
+        this.setPrijs(prijs);
+        this.setAantalInvoorraad(aantalInVoorraad);
+    }
 
     public Magazijn getMagazijn() {
         return magazijn;
@@ -48,15 +58,7 @@ public class Product implements Serializable {
         this.bestellingen = bestellingen;
     }
 
-    public Product() {
-        this(null, 0, 0);
-    }
-
-    public Product(String naam, double prijs, int aantalInVoorraad) {
-        this.setNaam(naam);
-        this.setPrijs(prijs);
-        this.setAantalInvoorraad(aantalInvoorraad);
-    }
+ 
 
     public String getNaam() {
         return naam;

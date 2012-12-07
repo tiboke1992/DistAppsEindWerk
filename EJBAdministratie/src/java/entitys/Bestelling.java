@@ -21,6 +21,7 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Bestelling implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,8 +29,16 @@ public class Bestelling implements Serializable {
     private Date datum;
     @ManyToOne
     private Klant klant;
-    @ManyToMany(mappedBy="bestellingen",cascade={CascadeType.MERGE, CascadeType.PERSIST})
-    private List<Product>producten;
+    @ManyToMany(mappedBy = "bestellingen", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private List<Product> producten;
+
+    public Bestelling() {
+        this(null);
+    }
+
+    public Bestelling(Date datum) {
+        this.setDatum(datum);
+    }
 
     public Klant getKlant() {
         return klant;
@@ -47,7 +56,6 @@ public class Bestelling implements Serializable {
         this.producten = producten;
     }
 
-    
     public Date getDatum() {
         return datum;
     }
@@ -55,7 +63,7 @@ public class Bestelling implements Serializable {
     public void setDatum(Date datum) {
         this.datum = datum;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -88,5 +96,4 @@ public class Bestelling implements Serializable {
     public String toString() {
         return "entitys.Bestelling[ id=" + id + " ]";
     }
-    
 }

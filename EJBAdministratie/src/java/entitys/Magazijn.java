@@ -28,20 +28,20 @@ public class Magazijn implements Serializable {
     @OneToMany(mappedBy = "magazijn", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<Product> producten;
 
-    public List<Product> getProducten() {
-        return producten;
-    }
-
-    public void setProducten(List<Product> producten) {
-        this.producten = producten;
-    }
-
     public Magazijn() {
         this(0);
     }
 
     public Magazijn(int magazijnNummer) {
         this.setMagazijnNummer(magazijnNummer);
+    }
+
+    public List<Product> getProducten() {
+        return producten;
+    }
+
+    public void setProducten(List<Product> producten) {
+        this.producten = producten;
     }
 
     public int getMagazijnNummer() {
@@ -83,5 +83,9 @@ public class Magazijn implements Serializable {
     @Override
     public String toString() {
         return "entitys.Magazijn[ id=" + id + " ]";
+    }
+
+    public void addProduct(Product product) {
+        this.producten.add(product);
     }
 }

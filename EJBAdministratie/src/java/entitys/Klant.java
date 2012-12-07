@@ -38,6 +38,17 @@ public class Klant implements Serializable {
     @OneToMany(mappedBy = "klant", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<Bestelling> bestellingen;
 
+    public Klant() {
+        this(null, null, null, null);
+    }
+
+    public Klant(String voorNaam, String naam, Date geboorteDatum, String telefoonNummer) {
+        this.setVoorNaam(voorNaam);
+        this.setNaam(naam);
+        this.setGeboorteDatum(geboorteDatum);
+        this.setTelefoonNummer(telefoonNummer);
+    }
+
     public List<Bestelling> getBestellingen() {
         return bestellingen;
     }
@@ -52,17 +63,6 @@ public class Klant implements Serializable {
 
     public void setAdressen(List<Adres> adressen) {
         this.adressen = adressen;
-    }
-
-    public Klant() {
-        this(null, null, null, null);
-    }
-
-    public Klant(String voorNaam, String naam, Date geboorteDatum, String telefoonNummer) {
-        this.setVoorNaam(voorNaam);
-        this.setNaam(naam);
-        this.setGeboorteDatum(geboorteDatum);
-        this.setTelefoonNummer(telefoonNummer);
     }
 
     public String getVoorNaam() {
@@ -103,6 +103,10 @@ public class Klant implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void addAdres(Adres adres) {
+        this.adressen.add(adres);
     }
 
     @Override

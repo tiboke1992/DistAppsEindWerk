@@ -18,6 +18,7 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Adres implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +29,18 @@ public class Adres implements Serializable {
     private String straat;
     @ManyToOne
     private Klant klant;
-   
+
+    public Adres() {
+        this(null, null, 0, null);
+    }
+
+    public Adres(String straat, String huisNr, int postCode, String gemeente) {
+        this.setStraat(straat);
+        this.setHuisNr(huisNr);
+        this.setPostCode(postCode);
+        this.setGemeente(gemeente);
+    }
+
     public Klant getKlant() {
         return klant;
     }
@@ -37,18 +49,6 @@ public class Adres implements Serializable {
         this.klant = klant;
     }
 
-    public Adres(){
-        this(null,null,0,null);
-    }
-    
-    public Adres(String straat,String huisNr, int postCode, String gemeente){
-        this.setStraat(straat);
-        this.setHuisNr(huisNr);
-        this.setPostCode(postCode);
-        this.setGemeente(gemeente);
-    }
-    
-    
     public int getPostCode() {
         return postCode;
     }
@@ -113,5 +113,4 @@ public class Adres implements Serializable {
     public String toString() {
         return "entitys.Adres[ id=" + id + " ]";
     }
-    
 }
