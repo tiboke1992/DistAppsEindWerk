@@ -96,4 +96,8 @@ public class Bestelling implements Serializable {
     public String toString() {
         return "entitys.Bestelling[ id=" + id + " ]";
     }
+    
+    public void addProduct(Product product){
+        this.producten.add(product);
+    }
 }

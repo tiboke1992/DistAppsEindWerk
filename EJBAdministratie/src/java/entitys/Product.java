@@ -116,4 +116,8 @@ public class Product implements Serializable {
     public String toString() {
         return "entitys.Product[ id=" + id + " ]";
     }
+    
+    public void addBestelling(Bestelling bestelling){
+        this.bestellingen.add(bestelling);
+    }
 }
