@@ -4,6 +4,7 @@
  */
 package fxmlapplication;
 
+import controller.SwitchViewController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,7 +20,6 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import ui.klant.FXMLNieuweKlantController;
 
 /**
  *
@@ -53,15 +53,12 @@ public class FXMLFormController implements Initializable {
     private AnchorPane rp;
     @FXML
     private Pane rightp;
+    private SwitchViewController view;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        try {
-            rp = (AnchorPane) FXMLLoader.load(this.getClass().getClassLoader().getResource("ui/klant/FXMLNieuweKlant.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLFormController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        view = new SwitchViewController();
         //treeview maken
         treeRoot.getChildren().addAll(klant, bestelling, producten);
         treeRoot.getChildren().get(0).getChildren().addAll(KlantOverzicht, klantNieuw, KlantWijzig, KlantVerwijder);
@@ -76,17 +73,20 @@ public class FXMLFormController implements Initializable {
             @Override
             public void changed(ObservableValue ov, Object t, Object t1) {
                 TreeItem item = (TreeItem) t1;
-                openScene(item);
+                try {
+                    openScene(item);
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLFormController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
-    public void openScene(TreeItem item) {
+    public void openScene(TreeItem item) throws IOException {
         rightPane.getChildren().remove(rp);
         if (item == klantNieuw) {
+            rp = view.getKlantNieuwAnchorPane();
             rightPane.getChildren().add(rp);
-        } else if (item.equals(KlantOverzicht)) {
-            System.out.println("klantoverzicht");
-        }
+        } 
     }
 }

@@ -47,7 +47,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //-------------FACADES INITIALISEREN-----------------------
-        //this.Initialize();
+       // this.Initialize();
         //-----------EINDE FACADES INITIALISEREN-------------
 
         //---------Objecten persisten----------------------
