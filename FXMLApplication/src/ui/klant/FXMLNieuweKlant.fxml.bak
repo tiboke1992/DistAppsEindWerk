@@ -17,6 +17,5 @@
     <TextField fx:id="telefoonNR" layoutX="252.0" layoutY="204.0" prefWidth="200.0" />
     <TextField fx:id="geboorteDatum" layoutX="252.0" layoutY="153.0" prefWidth="200.0" />
     <Button fx:id="save" layoutX="55.0" layoutY="258.0" mnemonicParsing="false" text="Save" />
-    <Label fx:id="boodschap" layoutX="257.0" layoutY="257.0" text="" />
   </children>
 </AnchorPane>
