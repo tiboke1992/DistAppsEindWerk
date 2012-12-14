@@ -9,6 +9,8 @@ import enitityControllers.KlantFacadeRemote;
 import entitys.Klant;
 import java.net.URL;
 import java.sql.Date;
+import java.util.Calendar;
+import java.util.IllegalFormatException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,7 +33,7 @@ public class FXMLNieuweKlantController implements Initializable {
      */
     ConnectionController connController;
     KlantFacadeRemote klantDB;
-    @FXML 
+    @FXML
     AnchorPane p;
     @FXML
     private TextField naam;
@@ -45,8 +47,10 @@ public class FXMLNieuweKlantController implements Initializable {
     private Button save;
     @FXML
     private Label boodschap;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         connController = new ConnectionController();
         klantDB = connController.getKlantDB();
         save.setOnAction(new EventHandler<ActionEvent>() {
@@ -56,25 +60,58 @@ public class FXMLNieuweKlantController implements Initializable {
                 addKlant();
             }
         });
-    }    
-    public AnchorPane getAnchorPane(){
+    }
+
+    public AnchorPane getAnchorPane() {
         return this.p;
     }
-    public void addKlant(){
+
+    public void addKlant() {
         String kVoornaam = this.voorNaam.getText();
         String kNaam = this.naam.getText();
         String kGeboorteDatum = this.geboorteDatum.getText();
-        Date date = Date.valueOf(kGeboorteDatum);
         String kTelefoorNR = this.telefoonNR.getText();
-        this.klantDB.create(new Klant(kVoornaam, kNaam, date, kTelefoorNR));
-        this.emptyFields();
+
+        if (testValues(kVoornaam,kNaam,kGeboorteDatum,kTelefoorNR)) {
+            Date date = Date.valueOf(kGeboorteDatum);
+            this.klantDB.create(new Klant(kVoornaam, kNaam, date, kTelefoorNR));
+            this.emptyFields();
+        }else{
+            this.boodschap.setText("Vult het eens deftig in AUB!");
+        }
+
     }
-    
-    public void emptyFields(){
+
+    public void emptyFields() {
         this.naam.clear();
         this.voorNaam.clear();
         this.geboorteDatum.clear();
         this.telefoonNR.clear();
         this.boodschap.setText("Klant succesvol toegevoegd");
+    }
+
+    public boolean testValues(String n, String v, String d, String t) {
+        boolean result = false;
+        if(n != null && v != null && d != null && t != null){
+            if(n.equals("")||v.equals("")||d.equals("")||t.equals("")){
+                
+            }else{
+                String[] str = d.split("-");
+                String year = str[0];
+                String month = str[1];
+                String day = str[2];
+                try{
+                    int iYear = Integer.parseInt(year);
+                    int iMonth = Integer.parseInt(month);
+                    int iDay = Integer.parseInt(day);
+                    if(iYear>1900 && iYear < Calendar.getInstance().get(Calendar.YEAR) && iMonth > 0 && iMonth < 13 && iDay > 0 && iDay < 32){
+                        result = true;
+                    }
+                }catch(IllegalFormatException ex){
+                
+                }
+            }
+        }
+        return result;
     }
 }
