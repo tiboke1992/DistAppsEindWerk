@@ -85,10 +85,11 @@ public class FXMLFormController implements Initializable {
         rightPane.getChildren().remove(rp);
         if (item == klantNieuw) {
             rp = view.getKlantNieuwAnchorPane();
-            rightPane.getChildren().add(rp);
         } else if(item == KlantOverzicht){
             rp = view.getKlantOverzichtPane();
-            rightPane.getChildren().add(rp);
+        } else if(item == KlantVerwijder){
+            rp = view.getKlantVerwijderenPane();
         }
+        rightPane.getChildren().add(rp);
     }
 }

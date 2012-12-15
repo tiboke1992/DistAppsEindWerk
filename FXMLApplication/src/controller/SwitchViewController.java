@@ -13,13 +13,19 @@ import javafx.scene.layout.AnchorPane;
  * @author tibo
  */
 public class SwitchViewController {
+
     public AnchorPane getKlantNieuwAnchorPane() throws IOException {
         AnchorPane ap = (AnchorPane) FXMLLoader.load(this.getClass().getClassLoader().getResource("ui/klant/FXMLNieuweKlant.fxml"));
         return ap;
     }
-    
-    public AnchorPane getKlantOverzichtPane()throws IOException{
-         AnchorPane ap = (AnchorPane) FXMLLoader.load(this.getClass().getClassLoader().getResource("ui/klant/FXMLOverzichtKlanten.fxml"));
+
+    public AnchorPane getKlantOverzichtPane() throws IOException {
+        AnchorPane ap = (AnchorPane) FXMLLoader.load(this.getClass().getClassLoader().getResource("ui/klant/FXMLOverzichtKlanten.fxml"));
+        return ap;
+    }
+
+    public AnchorPane getKlantVerwijderenPane() throws IOException {
+        AnchorPane ap = (AnchorPane) FXMLLoader.load(this.getClass().getClassLoader().getResource("ui/klant/FXMLVerwijderKlant.fxml"));
         return ap;
     }
 }
