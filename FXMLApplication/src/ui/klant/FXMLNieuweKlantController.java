@@ -4,9 +4,7 @@
  */
 package ui.klant;
 
-import controller.ConnectionController;
-import enitityControllers.KlantFacadeRemote;
-import entitys.Klant;
+import controller.DataController;
 import java.net.URL;
 import java.sql.Date;
 import java.util.Calendar;
@@ -31,8 +29,7 @@ public class FXMLNieuweKlantController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    ConnectionController connController;
-    KlantFacadeRemote klantDB;
+    private DataController dataController;
     @FXML
     AnchorPane p;
     @FXML
@@ -51,8 +48,7 @@ public class FXMLNieuweKlantController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        connController = new ConnectionController();
-        klantDB = connController.getKlantDB();
+        dataController = new DataController();
         save.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
@@ -74,7 +70,7 @@ public class FXMLNieuweKlantController implements Initializable {
 
         if (testValues(kVoornaam,kNaam,kGeboorteDatum,kTelefoorNR)) {
             Date date = Date.valueOf(kGeboorteDatum);
-            this.klantDB.create(new Klant(kVoornaam, kNaam, date, kTelefoorNR));
+            this.dataController.addNewKlant(kVoornaam, kNaam, date, kTelefoorNR);
             this.emptyFields();
         }else{
             this.boodschap.setText("Vult het eens deftig in AUB!");

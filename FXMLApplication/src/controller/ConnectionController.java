@@ -25,12 +25,12 @@ public class ConnectionController {
 
     //**Context en facades Declaratie
     Context c;
-    AdresFacadeRemote adresDB;
-    BestellingFacadeRemote bestellingDB;
-    KlantFacadeRemote klantDB;
-    MagazijnFacadeRemote magazijnDB;
-    ProductFacadeRemote productDB;
-    VasteKlantFacadeRemote vasteKlantDB;
+   public AdresFacadeRemote adresDB;
+   public BestellingFacadeRemote bestellingDB;
+   public KlantFacadeRemote klantDB;
+   public MagazijnFacadeRemote magazijnDB;
+   public ProductFacadeRemote productDB;
+   public VasteKlantFacadeRemote vasteKlantDB;
     //**Context en facades Declaratie;;;;;
 
     public ConnectionController() {

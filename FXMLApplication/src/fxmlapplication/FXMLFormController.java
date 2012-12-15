@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TreeItem;
@@ -87,6 +86,9 @@ public class FXMLFormController implements Initializable {
         if (item == klantNieuw) {
             rp = view.getKlantNieuwAnchorPane();
             rightPane.getChildren().add(rp);
-        } 
+        } else if(item == KlantOverzicht){
+            rp = view.getKlantOverzichtPane();
+            rightPane.getChildren().add(rp);
+        }
     }
 }
