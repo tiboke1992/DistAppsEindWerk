@@ -28,4 +28,6 @@ public interface BestellingFacadeRemote {
     List<Bestelling> findRange(int[] range);
 
     int count();
+    
+    void setBestellingenVanKlantOpNull(long id);
 }

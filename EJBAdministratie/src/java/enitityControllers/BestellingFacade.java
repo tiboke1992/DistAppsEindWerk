@@ -8,6 +8,7 @@ import entitys.Bestelling;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,4 +28,13 @@ public class BestellingFacade extends AbstractFacade<Bestelling> implements Best
     public BestellingFacade() {
         super(Bestelling.class);
     }
+
+    @Override
+    public void setBestellingenVanKlantOpNull(long id) {
+        Query query = em.createQuery("UPDATE Bestelling b SET b.klant = null WHERE b.klant.id = :id");
+        query.setParameter("id", id);
+        query.executeUpdate();
+    }
+
+
 }
