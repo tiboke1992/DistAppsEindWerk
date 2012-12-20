@@ -28,4 +28,9 @@ public class SwitchViewController {
         AnchorPane ap = (AnchorPane) FXMLLoader.load(this.getClass().getClassLoader().getResource("ui/klant/FXMLVerwijderKlant.fxml"));
         return ap;
     }
+    
+    public AnchorPane getKlantWijzigPane() throws IOException{
+         AnchorPane ap = (AnchorPane) FXMLLoader.load(this.getClass().getClassLoader().getResource("ui/klant/FXMLWijzigKlant.fxml"));
+        return ap;
+    }
 }
