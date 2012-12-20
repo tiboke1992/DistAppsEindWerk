@@ -44,4 +44,8 @@ public class DataController {
         bestellingDB.setBestellingenVanKlantOpNull(k.getId());
         klantDB.remove(k);
     }
+    
+    public void wijzigKlant(Klant k){
+        klantDB.edit(k);
+    }
 }

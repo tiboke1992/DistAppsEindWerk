@@ -27,5 +27,7 @@
     <TextField id="naam" fx:id="txtNaam" layoutX="129.0" layoutY="107.0" prefWidth="200.0" />
     <TextField id="gebDatum" fx:id="txtGebDat" layoutX="129.0" layoutY="149.0" prefWidth="200.0" />
     <TextField id="telefoonNr" fx:id="txtTelNr" layoutX="129.0" layoutY="192.0" prefWidth="200.0" />
+    <Button fx:id="save" layoutX="33.0" layoutY="238.0" mnemonicParsing="false" text="Save" />
+    <Label fx:id="lblError" layoutX="91.0" layoutY="241.0" text="error" />
   </children>
 </AnchorPane>
