@@ -6,7 +6,9 @@ package controller;
 
 import enitityControllers.BestellingFacadeRemote;
 import enitityControllers.KlantFacadeRemote;
+import enitityControllers.ProductFacadeRemote;
 import entitys.Klant;
+import entitys.Product;
 import java.sql.Date;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class DataController {
 
     private ConnectionController connController;
     private KlantFacadeRemote klantDB;
+    private ProductFacadeRemote productDB;
     private BestellingFacadeRemote bestellingDB;
 
     public DataController() {
@@ -28,6 +31,7 @@ public class DataController {
         connController = new ConnectionController();
         klantDB = connController.getKlantDB();
         bestellingDB = connController.getBestellingDB();
+        productDB = connController.getProductDB();
     }
 
     public void addNewKlant(String voornaam, String naam, Date geboorteDatum, String telefoonNR) {
@@ -37,6 +41,11 @@ public class DataController {
     public List<Klant> getKlantenLijst() {
         List<Klant> k = klantDB.findAll();
         return k;
+    }
+    
+    public List<Product> getProductenLijst(){
+        List<Product> p = productDB.findAll();
+        return p;
     }
     
     
