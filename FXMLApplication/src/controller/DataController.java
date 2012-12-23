@@ -58,6 +58,11 @@ public class DataController {
         klantDB.remove(k);
     }
     
+    public void deleteProduct(Product p){
+        bestellingDB.setProductenInBestellingenOpNull(p.getId());
+        productDB.remove(p);
+    }
+    
     public void wijzigKlant(Klant k){
         klantDB.edit(k);
     }

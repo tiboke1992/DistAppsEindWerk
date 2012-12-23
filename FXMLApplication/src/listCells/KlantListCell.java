@@ -16,10 +16,9 @@ public class KlantListCell extends ListCell<Klant> {
     @Override
     protected void updateItem(Klant k, boolean bln) {
         super.updateItem(k, bln);
-        if(k!=null){
+        if (k != null) {
             setItem(k);
             setText(k.getVoorNaam() + " " + k.getNaam());
         }
     }
-    
 }
