@@ -52,4 +52,18 @@ public class BestellingFacade extends AbstractFacade<Bestelling> implements Best
             super.edit(b);
         }
     }
+
+    @Override
+    public List<Bestelling> getBestellingenVanKlantMetId(long id) {
+        Query query = em.createQuery("SELECT b FROM Bestelling b WHERE b.klant.id =:id").setParameter("id", id);
+        List<Bestelling> bestellingen = query.getResultList();
+        return bestellingen;
+    }
+
+    @Override
+    public List<Product> getProductenVanBestelling(long id) {
+        Query q = em.createQuery("SELECT p FROM Bestelling b join b.producten p WHERE b.id = :id").setParameter("id", id);
+        List<Product> producten = q.getResultList();
+        return producten;
+    }
 }
