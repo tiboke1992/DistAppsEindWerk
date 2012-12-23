@@ -5,6 +5,8 @@
 package enitityControllers;
 
 import entitys.Bestelling;
+import entitys.Product;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,6 +36,21 @@ public class BestellingFacade extends AbstractFacade<Bestelling> implements Best
         Query query = em.createQuery("UPDATE Bestelling b SET b.klant = null WHERE b.klant.id = :id");
         query.setParameter("id", id);
         query.executeUpdate();
+    }
+
+    @Override
+    public void setProductenInBestellingenOpNull(long id) {
+        Query query = em.createQuery("SELECT e FROM Product p join p.bestellingen e where p.id = :id").setParameter("id", id);
+        List<Bestelling> bestellingen = query.getResultList();
+       Query q = em.createQuery("SELECT p FROM Product p WHERE p.id = :id").setParameter("id", id);
+       Product pp = (Product) q.getSingleResult();
+       
+        for(Bestelling b : bestellingen){
+           if(b.getProducten().contains(pp)){
+               b.getProducten().remove(pp);
+           }
+           super.edit(b);
+        }
     }
 
 

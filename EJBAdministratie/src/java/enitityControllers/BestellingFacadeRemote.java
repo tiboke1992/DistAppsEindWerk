@@ -30,4 +30,5 @@ public interface BestellingFacadeRemote {
     int count();
     
     void setBestellingenVanKlantOpNull(long id);
+    void setProductenInBestellingenOpNull(long id);
 }
