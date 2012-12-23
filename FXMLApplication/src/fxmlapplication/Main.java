@@ -33,7 +33,7 @@ public class Main extends Application {
         //-----------EINDE FACADES INITIALISEREN-------------
 
         //---------Objecten persisten----------------------
-        //this.Instantiate();
+       // this.Instantiate();
         //---------Einde Objecten persisten----------------
         Parent root = FXMLLoader.load(getClass().getResource("FXMLForm.fxml"));
         Scene scene = new Scene(root);

@@ -37,6 +37,10 @@ public class DataController {
     public void addNewKlant(String voornaam, String naam, Date geboorteDatum, String telefoonNR) {
         klantDB.create(new Klant(voornaam, naam, geboorteDatum, telefoonNR));
     }
+    
+    public void addNewProduct(String naam, double prijs, int aantal){
+        productDB.create(new Product(naam, prijs, aantal));
+    }
 
     public List<Klant> getKlantenLijst() {
         List<Klant> k = klantDB.findAll();

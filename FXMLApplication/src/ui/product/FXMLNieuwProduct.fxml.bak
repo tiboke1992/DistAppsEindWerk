@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="570.0" xmlns:fx="http://javafx.com/fxml" fx:controller="ui.product.FXMLNieuwProductController">
+  <children>
+    <Group id="Group" layoutX="75.0" layoutY="42.0">
+      <children>
+        <Group id="Group" layoutX="0.0" layoutY="0.0" scaleX="1.0" scaleY="1.0">
+          <children>
+            <Label layoutX="0.0" layoutY="0.0" text="Naam:" />
+            <Label layoutX="0.0" layoutY="49.0" text="Prijs:" />
+            <Label layoutX="0.0" layoutY="110.0" text="Aantal in voorraad:" />
+          </children>
+        </Group>
+        <TextField fx:id="naam" layoutX="171.0" layoutY="0.0" prefWidth="200.0" />
+        <TextField fx:id="prijs" layoutX="171.0" layoutY="49.0" prefWidth="200.0" />
+        <TextField fx:id="voorraad" layoutX="171.0" layoutY="99.0" prefWidth="200.0" />
+      </children>
+    </Group>
+    <Button fx:id="save" layoutX="75.0" layoutY="205.0" mnemonicParsing="false" text="Voeg toe" />
+    <Label fx:id="lbl" layoutX="246.0" layoutY="215.0" text="Label" />
+  </children>
+</AnchorPane>

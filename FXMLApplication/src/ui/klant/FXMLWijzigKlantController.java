@@ -135,19 +135,19 @@ public class FXMLWijzigKlantController implements Initializable {
             if(n.equals("")||v.equals("")||d.equals("")||t.equals("")){
                 
             }else{
+                try{
                 String[] str = d.split("-");
                 String year = str[0];
                 String month = str[1];
-                String day = str[2];
-                try{
+                String day = str[2];             
                     int iYear = Integer.parseInt(year);
                     int iMonth = Integer.parseInt(month);
                     int iDay = Integer.parseInt(day);
                     if(iYear>1900 && iYear < Calendar.getInstance().get(Calendar.YEAR) && iMonth > 0 && iMonth < 13 && iDay > 0 && iDay < 32){
                         result = true;
                     }
-                }catch(IllegalFormatException ex){
-                
+                }catch(ArrayIndexOutOfBoundsException ex){
+                    this.lblError.setText("Datum niet juist ingevuld");
                 }
             }
         }

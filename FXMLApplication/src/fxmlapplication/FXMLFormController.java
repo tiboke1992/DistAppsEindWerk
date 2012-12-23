@@ -85,14 +85,16 @@ public class FXMLFormController implements Initializable {
         rightPane.getChildren().remove(rp);
         if (item == klantNieuw) {
             rp = view.getKlantNieuwAnchorPane();
-        } else if(item == KlantOverzicht){
+        } else if (item == KlantOverzicht) {
             rp = view.getKlantOverzichtPane();
-        } else if(item == KlantVerwijder){
+        } else if (item == KlantVerwijder) {
             rp = view.getKlantVerwijderenPane();
-        } else if(item == KlantWijzig){
+        } else if (item == KlantWijzig) {
             rp = view.getKlantWijzigPane();
-        } else if(item == productenOverzicht){
+        } else if (item == productenOverzicht) {
             rp = view.getProductOverzichtPane();
+        } else if (item == productenNieuw) {
+            rp = view.getProductNieuwPane();
         }
         rightPane.getChildren().add(rp);
     }
