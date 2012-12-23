@@ -37,8 +37,8 @@ public class DataController {
     public void addNewKlant(String voornaam, String naam, Date geboorteDatum, String telefoonNR) {
         klantDB.create(new Klant(voornaam, naam, geboorteDatum, telefoonNR));
     }
-    
-    public void addNewProduct(String naam, double prijs, int aantal){
+
+    public void addNewProduct(String naam, double prijs, int aantal) {
         productDB.create(new Product(naam, prijs, aantal));
     }
 
@@ -46,24 +46,23 @@ public class DataController {
         List<Klant> k = klantDB.findAll();
         return k;
     }
-    
-    public List<Product> getProductenLijst(){
+
+    public List<Product> getProductenLijst() {
         List<Product> p = productDB.findAll();
         return p;
     }
-    
-    
-    public void deleteKlant(Klant k){
+
+    public void deleteKlant(Klant k) {
         bestellingDB.setBestellingenVanKlantOpNull(k.getId());
         klantDB.remove(k);
     }
-    
-    public void deleteProduct(Product p){
+
+    public void deleteProduct(Product p) {
         bestellingDB.setProductenInBestellingenOpNull(p.getId());
         productDB.remove(p);
     }
-    
-    public void wijzigKlant(Klant k){
+
+    public void wijzigKlant(Klant k) {
         klantDB.edit(k);
     }
 }

@@ -12,7 +12,7 @@ import javafx.scene.control.ListCell;
  * @author tibo
  */
 public class ProductListCell extends ListCell<Product> {
-    
+
     @Override
     protected void updateItem(Product p, boolean bln) {
         super.updateItem(p, bln);

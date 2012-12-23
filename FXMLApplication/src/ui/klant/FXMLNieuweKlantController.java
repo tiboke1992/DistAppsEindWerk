@@ -8,7 +8,6 @@ import controller.DataController;
 import java.net.URL;
 import java.sql.Date;
 import java.util.Calendar;
-import java.util.IllegalFormatException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -44,10 +43,10 @@ public class FXMLNieuweKlantController implements Initializable {
     private Button save;
     @FXML
     private Label boodschap;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         dataController = new DataController();
         save.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -58,17 +57,17 @@ public class FXMLNieuweKlantController implements Initializable {
             }
         });
     }
-    
+
     public AnchorPane getAnchorPane() {
         return this.p;
     }
-    
+
     public void addKlant() {
         String kVoornaam = this.voorNaam.getText();
         String kNaam = this.naam.getText();
         String kGeboorteDatum = this.geboorteDatum.getText();
         String kTelefoorNR = this.telefoonNR.getText();
-        
+
         if (testValues(kVoornaam, kNaam, kGeboorteDatum, kTelefoorNR)) {
             Date date = Date.valueOf(kGeboorteDatum);
             this.dataController.addNewKlant(kVoornaam, kNaam, date, kTelefoorNR);
@@ -76,9 +75,9 @@ public class FXMLNieuweKlantController implements Initializable {
         } else {
             this.boodschap.setText("Deftig velden invullen aub");
         }
-           
+
     }
-    
+
     public void emptyFields() {
         this.naam.clear();
         this.voorNaam.clear();
@@ -86,7 +85,7 @@ public class FXMLNieuweKlantController implements Initializable {
         this.telefoonNR.clear();
         this.boodschap.setText("Klant succesvol toegevoegd");
     }
-    
+
     public boolean testValues(String n, String v, String d, String t) {
         boolean result = false;
         if (n != null && v != null && d != null && t != null) {

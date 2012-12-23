@@ -88,9 +88,9 @@ public class FXMLProductVerwijderController implements Initializable {
         box.getSelectionModel().selectFirst();
         p = (Product) box.getSelectionModel().getSelectedItem();
     }
-    
-    public void removeProduct(){
-        if(this.getSelectedProduct() != null){
+
+    public void removeProduct() {
+        if (this.getSelectedProduct() != null) {
             this.controller.deleteProduct(this.getSelectedProduct());
         }
     }

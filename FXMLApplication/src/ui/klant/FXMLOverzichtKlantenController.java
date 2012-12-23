@@ -25,7 +25,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class FXMLOverzichtKlantenController implements Initializable {
 
-
     @FXML
     private TableView tabel;
     private List<Klant> klantenLijst;
@@ -44,19 +43,19 @@ public class FXMLOverzichtKlantenController implements Initializable {
         TableColumn naamCol = new TableColumn();
         TableColumn gebDatumCol = new TableColumn();
         TableColumn telefoonCol = new TableColumn();
-        
+
         voornaamCol.setText("Voornaam");
-        voornaamCol.setCellValueFactory(new PropertyValueFactory<Klant,String>("voorNaam"));
+        voornaamCol.setCellValueFactory(new PropertyValueFactory<Klant, String>("voorNaam"));
         naamCol.setText("Naam");
-        naamCol.setCellValueFactory(new PropertyValueFactory<Klant,String>("naam"));
+        naamCol.setCellValueFactory(new PropertyValueFactory<Klant, String>("naam"));
         gebDatumCol.setText("Geboorte Datum");
-        gebDatumCol.setCellValueFactory(new PropertyValueFactory<Klant,Date>("geboorteDatum"));
+        gebDatumCol.setCellValueFactory(new PropertyValueFactory<Klant, Date>("geboorteDatum"));
         telefoonCol.setText("Telefoon nummer");
-        telefoonCol.setCellValueFactory(new PropertyValueFactory<Klant,String>("telefoonNummer"));
-        
+        telefoonCol.setCellValueFactory(new PropertyValueFactory<Klant, String>("telefoonNummer"));
+
         tabel.setItems(list);
         tabel.getColumns().clear();
-        tabel.getColumns().addAll(voornaamCol,naamCol,gebDatumCol,telefoonCol);
+        tabel.getColumns().addAll(voornaamCol, naamCol, gebDatumCol, telefoonCol);
         tabel.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 }

@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
  * @author tibo
  */
 public class FXMLNieuwProductController implements Initializable {
+
     private DataController controller;
     @FXML
     private TextField naam;
@@ -58,7 +59,7 @@ public class FXMLNieuwProductController implements Initializable {
                         //toevoegen methode aanroepe
                         result = "Product seccesvol toegevoegd!";
                         voegProductToe(strnaam, dPrijs, iAantal);
-                        
+
                     } else {
                         result = "Prijs en aantal moeten groter of gelijk zijn aan 0";
                     }
@@ -73,17 +74,17 @@ public class FXMLNieuwProductController implements Initializable {
             lbl.setText("Voor de prijs moet je een double invullen en voor het aantal een geheel getal!");
         }
     }
-    
-    public void voegProductToe(String naam, double prijs, int aantal){
-        try{
+
+    public void voegProductToe(String naam, double prijs, int aantal) {
+        try {
             this.controller.addNewProduct(naam, prijs, aantal);
             this.leegVelden();
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             this.lbl.setText("Er is een fout opgetreden, probeer opnieuw!");
         }
     }
-    
-    private void leegVelden(){
+
+    private void leegVelden() {
         this.naam.clear();
         this.prijs.clear();
         this.voorraad.clear();

@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="570.0" xmlns:fx="http://javafx.com/fxml" fx:controller="ui.klant.FXMLNieuweKlantController">
-  <children>
-    <Label layoutX="55.0" layoutY="43.0" text="Voornaam:" />
-    <Label layoutX="55.0" layoutY="98.0" text="Naam:" />
-    <Label layoutX="55.0" layoutY="148.0" text="GeboorteDatum:" />
-    <Label layoutX="55.0" layoutY="210.0" text="TelefoonNR:" />
-    <TextField fx:id="voorNaam" layoutX="252.0" layoutY="37.0" prefWidth="200.0" />
-    <TextField fx:id="naam" layoutX="252.0" layoutY="92.0" prefWidth="200.0" />
-    <TextField fx:id="telefoonNR" layoutX="252.0" layoutY="204.0" prefWidth="200.0" />
-    <TextField fx:id="geboorteDatum" layoutX="252.0" layoutY="153.0" prefWidth="200.0" />
-    <Button fx:id="save" layoutX="55.0" layoutY="258.0" mnemonicParsing="false" text="Save" />
-    <Label fx:id="boodschap" layoutX="257.0" layoutY="257.0" text="" />
-    <Label layoutX="252.0" layoutY="175.0" text="bv. 1992-09-30" />
-  </children>
+    <children>
+        <Label layoutX="55.0" layoutY="43.0" text="Voornaam:" />
+        <Label layoutX="55.0" layoutY="98.0" text="Naam:" />
+        <Label layoutX="55.0" layoutY="148.0" text="GeboorteDatum:" />
+        <Label layoutX="55.0" layoutY="210.0" text="TelefoonNR:" />
+        <TextField fx:id="voorNaam" layoutX="252.0" layoutY="37.0" prefWidth="200.0" />
+        <TextField fx:id="naam" layoutX="252.0" layoutY="92.0" prefWidth="200.0" />
+        <TextField fx:id="telefoonNR" layoutX="252.0" layoutY="204.0" prefWidth="200.0" />
+        <TextField fx:id="geboorteDatum" layoutX="252.0" layoutY="153.0" prefWidth="200.0" />
+        <Button fx:id="save" layoutX="55.0" layoutY="258.0" mnemonicParsing="false" text="Save" />
+        <Label fx:id="boodschap" layoutX="257.0" layoutY="257.0" text="" />
+        <Label layoutX="252.0" layoutY="175.0" text="bv. 1992-09-30" />
+    </children>
 </AnchorPane>

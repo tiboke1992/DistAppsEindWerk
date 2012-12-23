@@ -17,7 +17,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-
 /**
  * FXML Controller class
  *
@@ -29,29 +28,29 @@ public class FXMLOverzichtProductenController implements Initializable {
     private TableView tabel;
     private List<Product> productenLijst;
     private DataController controller;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         controller = new DataController();
         productenLijst = controller.getProductenLijst();
-        ObservableList<Product>list = FXCollections.observableArrayList(productenLijst);
-        
+        ObservableList<Product> list = FXCollections.observableArrayList(productenLijst);
+
         TableColumn naamCol = new TableColumn();
         TableColumn prijsCol = new TableColumn();
         TableColumn aantalInVoorraadCol = new TableColumn();
-        
+
         naamCol.setText("Naam:");
         prijsCol.setText("Prijs");
         aantalInVoorraadCol.setText("Resterend aantal in voorraad");
-        
-        naamCol.setCellValueFactory(new PropertyValueFactory<Product,String>("naam"));
-        prijsCol.setCellValueFactory(new PropertyValueFactory<Product,Double>("prijs"));
-        aantalInVoorraadCol.setCellValueFactory(new PropertyValueFactory<Product,Integer>("aantalInvoorraad"));
-        
-         
+
+        naamCol.setCellValueFactory(new PropertyValueFactory<Product, String>("naam"));
+        prijsCol.setCellValueFactory(new PropertyValueFactory<Product, Double>("prijs"));
+        aantalInVoorraadCol.setCellValueFactory(new PropertyValueFactory<Product, Integer>("aantalInvoorraad"));
+
+
         tabel.setItems(list);
         tabel.getColumns().clear();
-        tabel.getColumns().addAll(naamCol,prijsCol,aantalInVoorraadCol);
+        tabel.getColumns().addAll(naamCol, prijsCol, aantalInVoorraadCol);
         tabel.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-    }    
+    }
 }

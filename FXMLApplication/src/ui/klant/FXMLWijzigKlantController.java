@@ -11,7 +11,6 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.IllegalFormatException;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -107,7 +106,6 @@ public class FXMLWijzigKlantController implements Initializable {
         this.txtGebDat.setText(text);
     }
 
-
     public void save() {
         String naam = this.txtNaam.getText();
         String voorNaam = this.txtVoornaam.getText();
@@ -121,32 +119,31 @@ public class FXMLWijzigKlantController implements Initializable {
             this.k.setTelefoonNummer(telefoonNr);
             controller.wijzigKlant(k);
             result = "Persoon correct gewijzigd";
-        }else{
-           //Label zette da er iet fout ingevuld is
+        } else {
+            //Label zette da er iet fout ingevuld is
             result = "Niet alles juist ingevuld!";
         }
         this.lblError.setText(result);
         this.lblError.setVisible(true);
     }
-    
+
     public boolean testValues(String n, String v, String d, String t) {
         boolean result = false;
-        if(n != null && v != null && d != null && t != null){
-            if(n.equals("")||v.equals("")||d.equals("")||t.equals("")){
-                
-            }else{
-                try{
-                String[] str = d.split("-");
-                String year = str[0];
-                String month = str[1];
-                String day = str[2];             
+        if (n != null && v != null && d != null && t != null) {
+            if (n.equals("") || v.equals("") || d.equals("") || t.equals("")) {
+            } else {
+                try {
+                    String[] str = d.split("-");
+                    String year = str[0];
+                    String month = str[1];
+                    String day = str[2];
                     int iYear = Integer.parseInt(year);
                     int iMonth = Integer.parseInt(month);
                     int iDay = Integer.parseInt(day);
-                    if(iYear>1900 && iYear < Calendar.getInstance().get(Calendar.YEAR) && iMonth > 0 && iMonth < 13 && iDay > 0 && iDay < 32){
+                    if (iYear > 1900 && iYear < Calendar.getInstance().get(Calendar.YEAR) && iMonth > 0 && iMonth < 13 && iDay > 0 && iDay < 32) {
                         result = true;
                     }
-                }catch(ArrayIndexOutOfBoundsException ex){
+                } catch (ArrayIndexOutOfBoundsException ex) {
                     this.lblError.setText("Datum niet juist ingevuld");
                 }
             }
