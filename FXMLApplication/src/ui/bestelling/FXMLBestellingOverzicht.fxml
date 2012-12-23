@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="570.0" xmlns:fx="http://javafx.com/fxml" fx:controller="ui.bestelling.FXMLBestellingOverzichtController">
+  <children>
+    <Label layoutX="22.0" layoutY="14.0" text="Klant:" />
+    <ComboBox fx:id="box" layoutX="72.0" layoutY="12.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList" />
+      </items>
+    </ComboBox>
+    <TableView fx:id="tabel" layoutX="0.0" layoutY="81.0" prefHeight="435.0" prefWidth="129.0" />
+    <TableView fx:id="productenTabel" layoutX="162.0" layoutY="81.0" prefHeight="435.0" prefWidth="394.0" />
+  </children>
+</AnchorPane>

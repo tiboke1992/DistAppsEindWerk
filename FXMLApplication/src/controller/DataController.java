@@ -7,6 +7,7 @@ package controller;
 import enitityControllers.BestellingFacadeRemote;
 import enitityControllers.KlantFacadeRemote;
 import enitityControllers.ProductFacadeRemote;
+import entitys.Bestelling;
 import entitys.Klant;
 import entitys.Product;
 import java.sql.Date;
@@ -51,6 +52,11 @@ public class DataController {
         List<Product> p = productDB.findAll();
         return p;
     }
+    
+    public List<Bestelling> getBestellingenVanKlant(Klant k){
+        List<Bestelling> b = bestellingDB.getBestellingenVanKlantMetId(k.getId());
+        return b;
+    }
 
     public void deleteKlant(Klant k) {
         bestellingDB.setBestellingenVanKlantOpNull(k.getId());
@@ -68,5 +74,9 @@ public class DataController {
 
     public void wijzigProduct(Product p) {
         productDB.edit(p);
+    }
+    
+    public List<Product> getProductenVanBestelling(Bestelling b){
+        return bestellingDB.getProductenVanBestelling(b.getId());
     }
 }

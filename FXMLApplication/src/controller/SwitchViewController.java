@@ -53,4 +53,9 @@ public class SwitchViewController {
         AnchorPane ap = (AnchorPane) FXMLLoader.load(this.getClass().getClassLoader().getResource("ui/product/FXMLProductWijzig.fxml"));
         return ap;
     }
+
+    public AnchorPane getBestellingOverzichtPane() throws IOException {
+        AnchorPane ap = (AnchorPane) FXMLLoader.load(this.getClass().getClassLoader().getResource("ui/bestelling/FXMLBestellingOverzicht.fxml"));
+        return ap;
+    }
 }
