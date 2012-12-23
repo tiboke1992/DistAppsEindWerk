@@ -65,4 +65,8 @@ public class DataController {
     public void wijzigKlant(Klant k) {
         klantDB.edit(k);
     }
+
+    public void wijzigProduct(Product p) {
+        productDB.edit(p);
+    }
 }

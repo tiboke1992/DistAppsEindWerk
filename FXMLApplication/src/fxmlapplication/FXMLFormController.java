@@ -97,6 +97,8 @@ public class FXMLFormController implements Initializable {
             rp = view.getProductNieuwPane();
         } else if (item == productenVerwijder) {
             rp = view.getProductVerwijderPane();
+        } else if (item == productenWijzig) {
+            rp = view.getProductWijzigPane();
         }
         rightPane.getChildren().add(rp);
     }
