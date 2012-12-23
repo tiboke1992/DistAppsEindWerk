@@ -133,8 +133,8 @@ public class Klant implements Serializable {
     public String toString() {
         return "entitys.Klant[ id=" + id + " ]";
     }
-    
-    public void addBestelling(Bestelling bestelling){
+
+    public void addBestelling(Bestelling bestelling) {
         this.bestellingen.add(bestelling);
     }
 }

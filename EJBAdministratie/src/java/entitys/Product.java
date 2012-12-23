@@ -31,7 +31,7 @@ public class Product implements Serializable {
     private List<Bestelling> bestellingen;
     @ManyToOne
     private Magazijn magazijn;
-    
+
     public Product() {
         this(null, 0, 0);
     }
@@ -57,8 +57,6 @@ public class Product implements Serializable {
     public void setBestellingen(List<Bestelling> bestellingen) {
         this.bestellingen = bestellingen;
     }
-
- 
 
     public String getNaam() {
         return naam;
@@ -116,8 +114,8 @@ public class Product implements Serializable {
     public String toString() {
         return "entitys.Product[ id=" + id + " ]";
     }
-    
-    public void addBestelling(Bestelling bestelling){
+
+    public void addBestelling(Bestelling bestelling) {
         this.bestellingen.add(bestelling);
     }
 }

@@ -28,6 +28,4 @@ public interface KlantFacadeRemote {
     List<Klant> findRange(int[] range);
 
     int count();
-    
-    
 }
