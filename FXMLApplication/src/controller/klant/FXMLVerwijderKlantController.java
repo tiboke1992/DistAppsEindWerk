@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.product;
+package controller.klant;
 
 import controller.DataController;
-import entitys.Product;
+import entitys.Klant;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -22,76 +22,77 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
-import listCells.ProductListCell;
+import listCells.KlantListCell;
 
 /**
  * FXML Controller class
  *
  * @author tibo
  */
-public class FXMLProductVerwijderController implements Initializable {
+public class FXMLVerwijderKlantController implements Initializable {
 
     @FXML
     private Button delete;
     @FXML
     private ComboBox box;
     private DataController controller;
-    private List<Product> lijst;
-    private Product p;
+    private List<Klant> lijst;
+    private Klant k;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         controller = new DataController();
-        lijst = controller.getProductenLijst();
-        ObservableList<Product> list = FXCollections.observableArrayList(lijst);
-        box.setButtonCell(new ProductListCell());
-        box.setCellFactory(new Callback<ListView<Product>, ListCell<Product>>() {
+        lijst = controller.getKlantenLijst();
+        ObservableList<Klant> list = FXCollections.observableArrayList(lijst);
+        box.setButtonCell(new KlantListCell());
+        box.setCellFactory(new Callback<ListView<Klant>, ListCell<Klant>>() {
             @Override
-            public ListCell<Product> call(ListView<Product> p) {
-                return new ProductListCell();
+            public ListCell<Klant> call(ListView<Klant> p) {
+                return new KlantListCell();
             }
         });
+
+
 
         box.getItems().clear();
         box.setItems(list);
         box.getSelectionModel().selectFirst();
-        p = (Product) box.getSelectionModel().getSelectedItem();
+        k = (Klant) box.getSelectionModel().getSelectedItem();
         box.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue ov, Object t, Object t1) {
-                Product produ = (Product) t1;
-                setSelectedProduct(produ);
+                Klant k = (Klant) t1;
+                setSelectedKlant(k);
             }
         });
-
-        this.delete.setOnAction(new EventHandler<ActionEvent>() {
+        delete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent t) {
-                removeProduct();
+                removeKlant();
                 refreshComboBox();
             }
         });
     }
 
-    public void setSelectedProduct(Product p) {
-        this.p = p;
+    public void setSelectedKlant(Klant klant) {
+        this.k = klant;
     }
 
-    public Product getSelectedProduct() {
-        return this.p;
+    public Klant getCurrentKlant() {
+        return this.k;
+    }
+
+    public void removeKlant() {
+        if (this.getCurrentKlant() != null) {
+            controller.deleteKlant(this.getCurrentKlant());
+        }
     }
 
     public void refreshComboBox() {
-        lijst = controller.getProductenLijst();
-        ObservableList<Product> list = FXCollections.observableArrayList(lijst);
+        lijst = controller.getKlantenLijst();
+        ObservableList<Klant> list = FXCollections.observableArrayList(lijst);
         box.setItems(list);
         box.getSelectionModel().selectFirst();
-        p = (Product) box.getSelectionModel().getSelectedItem();
-    }
-
-    public void removeProduct() {
-        if (this.getSelectedProduct() != null) {
-            this.controller.deleteProduct(this.getSelectedProduct());
-        }
+        k = (Klant) box.getSelectionModel().getSelectedItem();
     }
 }

@@ -8,22 +8,22 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="570.0" xmlns:fx="http://javafx.com/fxml" fx:controller="ui.klant.FXMLOverzichtKlantenController">
-  <children>
-    <TableView id="table" fx:id="tabel" layoutX="14.0" layoutY="95.0" prefHeight="407.0" prefWidth="542.0">
-      <columns>
-        <TableColumn prefWidth="75.0" text="Column X" />
-        <TableColumn prefWidth="75.0" text="Column X" />
-      </columns>
-    </TableView>
-    <Label layoutX="14.0" layoutY="33.0" prefWidth="70.0" text="Sorteer op:" />
-    <ChoiceBox fx:id="choiceBox" layoutX="102.0" layoutY="33.0">
-      <items>
-        <FXCollections fx:factory="observableArrayList">
-          <String fx:value="Item 1" />
-          <String fx:value="Item 2" />
-          <String fx:value="Item 3" />
-        </FXCollections>
-      </items>
-    </ChoiceBox>
-  </children>
+    <children>
+        <TableView id="table" fx:id="tabel" layoutX="14.0" layoutY="95.0" prefHeight="407.0" prefWidth="542.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="Column X" />
+                <TableColumn prefWidth="75.0" text="Column X" />
+            </columns>
+        </TableView>
+        <Label layoutX="14.0" layoutY="33.0" prefWidth="70.0" text="Sorteer op:" />
+        <ChoiceBox fx:id="choiceBox" layoutX="102.0" layoutY="33.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Item 1" />
+                    <String fx:value="Item 2" />
+                    <String fx:value="Item 3" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+    </children>
 </AnchorPane>

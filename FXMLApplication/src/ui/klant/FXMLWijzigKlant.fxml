@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="ui.klant.FXMLWijzigKlantController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.klant.FXMLWijzigKlantController">
     <children>
         <Label layoutX="190.0" layoutY="25.0" text="Klant:" />
         <ComboBox id="klantenBox" fx:id="box" layoutX="229.0" layoutY="25.0">
