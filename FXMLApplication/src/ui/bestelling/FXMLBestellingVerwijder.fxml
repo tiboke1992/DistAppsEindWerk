@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="570.0" xmlns:fx="http://javafx.com/fxml" fx:controller="ui.bestelling.FXMLBestellingVerwijderController">
+<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="570.0" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.bestelling.FXMLBestellingVerwijderController">
   <children>
     <Label layoutX="27.0" layoutY="14.0" text="Klant:" />
     <ComboBox fx:id="box" layoutX="79.0" layoutY="15.0">
