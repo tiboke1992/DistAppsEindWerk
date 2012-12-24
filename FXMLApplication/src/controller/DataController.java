@@ -52,8 +52,8 @@ public class DataController {
         List<Product> p = productDB.findAll();
         return p;
     }
-    
-    public List<Bestelling> getBestellingenVanKlant(Klant k){
+
+    public List<Bestelling> getBestellingenVanKlant(Klant k) {
         List<Bestelling> b = bestellingDB.getBestellingenVanKlantMetId(k.getId());
         return b;
     }
@@ -75,26 +75,31 @@ public class DataController {
     public void wijzigProduct(Product p) {
         productDB.edit(p);
     }
-    
-    public List<Product> getProductenVanBestelling(Bestelling b){
+
+    public List<Product> getProductenVanBestelling(Bestelling b) {
         return bestellingDB.getProductenVanBestelling(b.getId());
     }
-    
-    public void addBestellingAanKlant(Klant k , List<Product> producten, Date datum){
-       Bestelling b = bestellingDB.addBestellingAanKlant(k.getId(), datum,producten);
-       List<Bestelling> best = klantDB.getKlantMetBestellingen(k.getId());
-       best.add(b);
-       Klant k1 = klantDB.find(k.getId());
-       k1.setBestellingen(best);
-       klantDB.edit(k1);
-       //alle producten aan bestelling toevoegen
-       productDB.voegBestellingAanProductenToe(b.getId(), producten);
+
+    public void addBestellingAanKlant(Klant k, List<Product> producten, Date datum) {
+        Bestelling b = bestellingDB.addBestellingAanKlant(k.getId(), datum, producten);
+        List<Bestelling> best = klantDB.getKlantMetBestellingen(k.getId());
+        best.add(b);
+        Klant k1 = klantDB.find(k.getId());
+        k1.setBestellingen(best);
+        klantDB.edit(k1);
+        //alle producten aan bestelling toevoegen
+        productDB.voegBestellingAanProductenToe(b.getId(), producten);
     }
-    
-    public void deleteBestelling(Klant k, Bestelling b){
+
+    public void deleteBestelling(Klant k, Bestelling b) {
         //eerst aan de klantedb zegge dat hij de geselecteerde klant die bestelling moet verwijderen
         klantDB.deleteBestelling(k.getId(), b.getId());
         productDB.deleteBestellingen(b.getId());
         bestellingDB.remove(b);
+    }
+
+    public void BestellingWijzig(Klant k, Bestelling b, List<Product> productenLijst) {
+        addBestellingAanKlant(k, productenLijst, b.getDatum());
+        deleteBestelling(k, b);
     }
 }
