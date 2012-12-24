@@ -79,4 +79,15 @@ public class DataController {
     public List<Product> getProductenVanBestelling(Bestelling b){
         return bestellingDB.getProductenVanBestelling(b.getId());
     }
+    
+    public void addBestellingAanKlant(Klant k , List<Product> producten, Date datum){
+       Bestelling b = bestellingDB.addBestellingAanKlant(k.getId(), datum,producten);
+       List<Bestelling> best = klantDB.getKlantMetBestellingen(k.getId());
+       best.add(b);
+       Klant k1 = klantDB.find(k.getId());
+       k1.setBestellingen(best);
+       klantDB.edit(k1);
+       //alle producten aan bestelling toevoegen
+       productDB.voegBestellingAanProductenToe(b.getId(), producten);
+    }
 }
