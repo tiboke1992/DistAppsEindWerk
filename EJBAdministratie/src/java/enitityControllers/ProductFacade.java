@@ -34,11 +34,23 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
     @Override
     public void voegBestellingAanProductenToe(Long bestellingID, List<Product> producten) {
         Query q1 = em.createQuery("SELECT b FROM Bestelling b WHERE b.id =:id").setParameter("id", bestellingID);
-        Bestelling b = (Bestelling)q1.getSingleResult(); 
-        for(Product p : producten){
+        Bestelling b = (Bestelling) q1.getSingleResult();
+        for (Product p : producten) {
             Product s = super.find(p.getId());
             s.addBestelling(b);
             super.edit(s);
+        }
+    }
+
+    @Override
+    public void deleteBestellingen(Long bestellingID) {
+        Query q = em.createQuery("SELECT b FROM Bestelling as e join e.producten AS b WHERE e.id = :id").setParameter("id", bestellingID);
+        List<Product> producten = q.getResultList();
+        Query q2 = em.createQuery("SELECT b FROM Bestelling b WHERE b.id = :id").setParameter("id", bestellingID);
+        Bestelling b = (Bestelling) q2.getSingleResult();
+        for (Product p : producten) {
+            p.getBestellingen().remove(b);
+            super.edit(p);
         }
     }
 }

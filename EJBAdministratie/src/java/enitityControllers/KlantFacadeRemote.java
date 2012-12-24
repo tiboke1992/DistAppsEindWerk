@@ -31,4 +31,6 @@ public interface KlantFacadeRemote {
     int count();
     
     List<Bestelling> getKlantMetBestellingen(Long id);
+    
+    public void deleteBestelling(Long klantID, Long BestellingID);
 }

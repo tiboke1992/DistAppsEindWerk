@@ -37,4 +37,12 @@ public class KlantFacade extends AbstractFacade<Klant> implements KlantFacadeRem
         List<Bestelling> bestellingen = q.getResultList();
         return bestellingen;
     }
+
+    @Override
+    public void deleteBestelling(Long klantID, Long BestellingID) {
+        Query q = em.createQuery("SELECT b FROM Bestelling AS b WHERE b.id = :id").setParameter("id", BestellingID);
+        Bestelling best = (Bestelling)q.getSingleResult();
+        Klant k = super.find(klantID);
+        k.getBestellingen().remove(best);
+    }
 }
