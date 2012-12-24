@@ -5,7 +5,9 @@
 package enitityControllers;
 
 import entitys.Bestelling;
+import entitys.Klant;
 import entitys.Product;
+import java.sql.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -65,5 +67,19 @@ public class BestellingFacade extends AbstractFacade<Bestelling> implements Best
         Query q = em.createQuery("SELECT p FROM Bestelling b join b.producten p WHERE b.id = :id").setParameter("id", id);
         List<Product> producten = q.getResultList();
         return producten;
+    }
+
+    @Override
+    public Bestelling addBestellingAanKlant(long id, Date date, List<Product> producten) {
+        Query q1 = em.createQuery("SELECT k FROM Klant as k WHERE k.id = :id").setParameter("id", id);
+        Klant k = (Klant) q1.getSingleResult();
+        Bestelling b = new Bestelling(date);
+        b = (Bestelling) super.create(b);
+        b.setKlant(k);
+        b = (Bestelling)super.edit(b);
+        b.setProducten(producten);
+        b = (Bestelling)super.edit(b);
+        System.out.println(b.getProducten().size());
+        return b;
     }
 }

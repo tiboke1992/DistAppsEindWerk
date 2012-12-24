@@ -28,4 +28,6 @@ public interface ProductFacadeRemote {
     List<Product> findRange(int[] range);
 
     int count();
+    
+    void voegBestellingAanProductenToe(Long bestellingID, List<Product> producten);
 }

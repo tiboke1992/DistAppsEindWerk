@@ -4,10 +4,13 @@
  */
 package enitityControllers;
 
+import entitys.Bestelling;
 import entitys.Klant;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,5 +29,12 @@ public class KlantFacade extends AbstractFacade<Klant> implements KlantFacadeRem
 
     public KlantFacade() {
         super(Klant.class);
+    }
+
+    @Override
+    public List<Bestelling> getKlantMetBestellingen(Long id) {
+        Query q = em.createQuery("SELECT b FROM Klant k JOIN k.bestellingen b WHERE k.id =:id").setParameter("id", id);
+        List<Bestelling> bestellingen = q.getResultList();
+        return bestellingen;
     }
 }

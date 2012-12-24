@@ -4,6 +4,7 @@
  */
 package enitityControllers;
 
+import entitys.Bestelling;
 import entitys.Klant;
 import java.util.List;
 import javax.ejb.Remote;
@@ -28,4 +29,6 @@ public interface KlantFacadeRemote {
     List<Klant> findRange(int[] range);
 
     int count();
+    
+    List<Bestelling> getKlantMetBestellingen(Long id);
 }

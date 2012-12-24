@@ -6,6 +6,7 @@ package enitityControllers;
 
 import entitys.Bestelling;
 import entitys.Product;
+import java.sql.Date;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -33,7 +34,10 @@ public interface BestellingFacadeRemote {
     void setBestellingenVanKlantOpNull(long id);
 
     void setProductenInBestellingenOpNull(long id);
-    
+
     List<Bestelling> getBestellingenVanKlantMetId(long id);
+
     List<Product> getProductenVanBestelling(long id);
+    
+    Bestelling addBestellingAanKlant(long id,Date date, List<Product> producten);
 }
