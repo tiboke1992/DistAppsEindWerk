@@ -90,4 +90,11 @@ public class DataController {
        //alle producten aan bestelling toevoegen
        productDB.voegBestellingAanProductenToe(b.getId(), producten);
     }
+    
+    public void deleteBestelling(Klant k, Bestelling b){
+        //eerst aan de klantedb zegge dat hij de geselecteerde klant die bestelling moet verwijderen
+        klantDB.deleteBestelling(k.getId(), b.getId());
+        productDB.deleteBestellingen(b.getId());
+        bestellingDB.remove(b);
+    }
 }

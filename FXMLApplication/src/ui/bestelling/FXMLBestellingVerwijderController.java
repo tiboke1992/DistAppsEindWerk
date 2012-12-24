@@ -16,8 +16,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -32,7 +35,7 @@ import listCells.KlantListCell;
  *
  * @author tibo
  */
-public class FXMLBestellingOverzichtController implements Initializable {
+public class FXMLBestellingVerwijderController implements Initializable {
 
     @FXML
     private ComboBox box;
@@ -40,6 +43,8 @@ public class FXMLBestellingOverzichtController implements Initializable {
     private TableView tabel;
     @FXML
     private TableView productenTabel;
+    @FXML
+    private Button delete;
     private DataController controller;
     private List<Klant> lijst;
     private Klant k;
@@ -52,6 +57,7 @@ public class FXMLBestellingOverzichtController implements Initializable {
         productenTabel.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         controller = new DataController();
         this.pupulateCombo();
+
         try {
             bestellingLijst = controller.getBestellingenVanKlant(this.getCurrentKlant());
             ObservableList<Bestelling> list = FXCollections.observableArrayList(bestellingLijst);
@@ -71,7 +77,6 @@ public class FXMLBestellingOverzichtController implements Initializable {
             List<Product> producten = controller.getProductenVanBestelling(this.getBestelling());
             ObservableList<Product> pList = FXCollections.observableArrayList(producten);
             productenTabel.setItems(pList);
-            productenTabel.getColumns().clear();
         } catch (NullPointerException e) {
         }
         TableColumn naam = new TableColumn();
@@ -80,16 +85,13 @@ public class FXMLBestellingOverzichtController implements Initializable {
         prijs.setText("Prijs");
         naam.setCellValueFactory(new PropertyValueFactory<Product, String>("naam"));
         prijs.setCellValueFactory(new PropertyValueFactory<Product, Double>("prijs"));
-
+        productenTabel.getColumns().clear();
         productenTabel.getColumns().addAll(naam, prijs);
         productenTabel.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
 
         box.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue ov, Object t, Object t1) {
-                productenTabel.getItems().clear();
-                tabel.getItems().clear();
                 Klant s = (Klant) t1;
                 setSelectedKlant(s);
                 pop1();
@@ -111,6 +113,7 @@ public class FXMLBestellingOverzichtController implements Initializable {
 
             }
         });
+        initializeDeleteButton();
     }
 
     public void pupulateCombo() {
@@ -157,23 +160,39 @@ public class FXMLBestellingOverzichtController implements Initializable {
     }
 
     public void pop1() {
-        try {
-            bestellingLijst = controller.getBestellingenVanKlant(this.getCurrentKlant());
-            ObservableList<Bestelling> list = FXCollections.observableArrayList(bestellingLijst);
-            tabel.setItems(list);
-        } catch (NullPointerException e) {
-        }
+        bestellingLijst = controller.getBestellingenVanKlant(this.getCurrentKlant());
+        ObservableList<Bestelling> list = FXCollections.observableArrayList(bestellingLijst);
+        tabel.setItems(list);
     }
 
     public void pop2() {
-        tabel.getSelectionModel().selectFirst();
-        Bestelling r = (Bestelling) tabel.getSelectionModel().getSelectedItem();
-        this.setBestelling(r);
         try {
+            tabel.getSelectionModel().selectFirst();
+            Bestelling r = (Bestelling) tabel.getSelectionModel().getSelectedItem();
+            this.setBestelling(r);
             List<Product> producten = controller.getProductenVanBestelling(this.getBestelling());
             ObservableList<Product> pList = FXCollections.observableArrayList(producten);
             productenTabel.setItems(pList);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException ex) {
+            productenTabel.getItems().clear();
         }
+    }
+
+    public void initializeDeleteButton() {
+        delete.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent t) {
+                if (getBestelling() != null) {
+                    deleteBestelling();
+                }
+            }
+        });
+    }
+
+    public void deleteBestelling() {
+        controller.deleteBestelling(getCurrentKlant(), getBestelling());
+
+        pop1();
+        pop2();
     }
 }
